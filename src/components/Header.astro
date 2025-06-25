@@ -1,0 +1,110 @@
+---
+import Logo from "../assets/color-letter.svg";
+import IconHamburger from "../assets/icons/icon-hamburger.svg";
+import IconClose from "../assets/icons/icon-close.svg";
+import Social from "./atoms/Social.astro";
+
+interface Props {
+    index: number;
+}
+
+const { index } = Astro.props;
+
+const headers = ["Inicio", "Nuestras Campers", "Contacto", "Más información"];
+
+const getClass = (inx: number) => {
+    return inx === index
+        ? "!text-[#121212] underline text-brevia"
+        : "text-brevia hover:text-[#121212] hover:underline cursor-pointer";
+};
+
+const getLateralClass = (inx: number) => {
+    return inx === index ? "bg-[#F6F6F6]" : "hover:bg-[#F6F6F6] cursor-pointer";
+};
+---
+
+<header class="flex items-center justify-center w-full h-[100px] relative">
+    <!-- Normal header -->
+
+    <div
+        class="w-full max-w-[1200px] flex-row items-center justify-between px-[50px] py-2 lg:flex hidden"
+    >
+        <div class="flex flex-row items-center">
+            <Logo class="w-[70px] mr-[2rem]" />
+
+            <div
+                class="flex flex-row gap-x-5 [&>*]:text-[#4D4D4D] [&>*]:text-[14px]"
+            >
+                {
+                    headers.map((val, index) => (
+                        <span class={getClass(index)}>{val}</span>
+                    ))
+                }
+            </div>
+        </div>
+
+        <div>Español</div>
+    </div>
+
+    <!-- Responsive header -->
+
+    <div
+        class="w-full max-w-[1200px] flex flex-row items-center justify-between px-[50px] py-2 lg:hidden"
+    >
+        <IconHamburger
+            id="iconHamburger"
+            class="w-[20px] h-[20px] cursor-pointer hover:scale-105"
+        />
+        <IconClose
+            id="iconClose"
+            class="w-[20px] h-[20px] cursor-pointer hover:scale-105 hidden"
+        />
+
+        <Logo class="w-[70px] mr-[2rem]" />
+
+        <div></div>
+    </div>
+
+    <!-- Lateral menu -->
+
+    <div
+        id="lateralMenu"
+        class="absolute left-0 top-[100px] w-full h-[calc(100dvh-100px)] bg-[#12121280] flex hidden lg:hidden"
+    >
+        <div
+            class="left-0 w-[28rem] max-w-[70vw] bg-white flex flex-col justify-between"
+        >
+            <div class="py-[30px] gap-y-[1px] flex flex-col">
+                {
+                    headers.map((val, index) => (
+                        <div
+                            class={`px-[30px] py-[11px] ${getLateralClass(index)}`}
+                        >
+                            <span class="text-brevia">{val}</span>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="bg-[#F6F6F6] flex flex-col gap-y-8 px-[30px] py-[20px]">
+                <span>Español</span>
+                <Social />
+            </div>
+
+            <script is:inline>
+                const iconHam = document.getElementById("iconHamburger");
+                const iconClose = document.getElementById("iconClose");
+                const lateralMenu = document.getElementById("lateralMenu");
+
+                function toggleVisibility() {
+                    lateralMenu.classList.toggle("hidden");
+                    iconHam.classList.toggle("hidden");
+                    iconClose.classList.toggle("hidden");
+                }
+
+                iconHam.addEventListener("click", toggleVisibility);
+                iconClose.addEventListener("click", toggleVisibility);
+            </script>
+        </div>
+    </div>
+</header>
