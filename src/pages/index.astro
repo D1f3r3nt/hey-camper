@@ -1,8 +1,33 @@
 ---
+import AButtonPrimary from "../components/atoms/AButtons/AButtonPrimary.astro";
+import AButtonSecondary from "../components/atoms/AButtons/AButtonSecondary.astro";
+import HighlightCamper from "../components/molecules/HighlightCamper.astro";
 import LayoutPage from "../layouts/LayoutPage.astro";
+
 import "../styles/global.css";
 ---
 
 <LayoutPage title="Hey Camper" indexMenu={0}>
-	<div class="w-full bg-black text-white">AAA</div>
+	<div class="h-[280px] md:h-[420px]">
+		<div
+			class="w-[100dvw] h-[280px] md:h-[420px] text-white absolute flex justify-center left-0 bg-banner-img"
+		>
+			<div
+				class="max-w-[1200px] w-full md:p-[50px] px-[15px] py-[40px] z-5 flex flex-col justify-center"
+			>
+				<span class="text-brevia text-[30px] md:text-[40px]">
+					Alquila tu Camper en Mallorca
+				</span>
+
+				<span class="opacity-75 text-[16px] mt-[10px]">
+					La mejor manera de viajar y dormir en Mallorca
+				</span>
+
+				<AButtonSecondary label="Alquila desde 75€/día" link="" />
+			</div>
+			<div class="bg-black opacity-25 w-full h-full absolute"></div>
+		</div>
+	</div>
+
+	<HighlightCamper />
 </LayoutPage>

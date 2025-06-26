@@ -22,7 +22,9 @@ const { title, indexMenu } = Astro.props;
 	<body class="flex flex-col">
 		<Header index={indexMenu} />
 		<main class="w-full flex justify-center flex-1">
-			<div class="max-w-[1200px] w-full px-[50px]">
+			<div
+				class="max-w-[1200px] w-full md:px-[50px] px-[15px] flex flex-col"
+			>
 				<slot />
 			</div>
 		</main>
