@@ -18,6 +18,15 @@ const getClass = (inx: number) => {
         : "text-brevia hover:text-[#121212] hover:underline cursor-pointer";
 };
 
+const getRoute = (inx: number) => {
+    switch (inx) {
+        case 0:
+            return "/";
+        case 1:
+            return "/campers";
+    }
+};
+
 const getLateralClass = (inx: number) => {
     return inx === index ? "bg-[#F6F6F6]" : "hover:bg-[#F6F6F6] cursor-pointer";
 };
@@ -37,7 +46,9 @@ const getLateralClass = (inx: number) => {
             >
                 {
                     headers.map((val, index) => (
-                        <span class={getClass(index)}>{val}</span>
+                        <a class={getClass(index)} href={getRoute(index)}>
+                            {val}
+                        </a>
                     ))
                 }
             </div>
@@ -77,11 +88,12 @@ const getLateralClass = (inx: number) => {
             <div class="py-[30px] gap-y-[1px] flex flex-col">
                 {
                     headers.map((val, index) => (
-                        <div
+                        <a
                             class={`px-[30px] py-[11px] ${getLateralClass(index)}`}
+                            href={getRoute(index)}
                         >
                             <span class="text-brevia">{val}</span>
-                        </div>
+                        </a>
                     ))
                 }
             </div>
