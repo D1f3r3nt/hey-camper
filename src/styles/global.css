@@ -28,3 +28,86 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.hcontainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.container {
+    max-width: 724px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: solid 1px #B4CCD0;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.container * {
+    cursor: pointer;
+}
+
+.container>span {
+    font-weight: bold;
+}
+
+.container>div {
+    margin-top: 16px;
+    padding: 8px;
+    border: solid 1px #8FB990;
+    border-radius: 8px;
+    width: 200px;
+    heigth: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.call {
+    color: white;
+    background-color: #8FB990;
+    margin-top: 8px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

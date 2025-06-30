@@ -1,0 +1,92 @@
+---
+import TextField from "../components/atoms/TextField.astro";
+import LayoutPage from "../layouts/LayoutPage.astro";
+
+import "../styles/global.css";
+---
+
+<LayoutPage indexMenu={2} title="Contacto - Hey Camper">
+    <div
+        class="flex flex-col md:w-[70%] w-full items-center self-center gap-y-5 mt-10"
+    >
+        <span class="text-[24px] italic text-brevia">
+            ¿Tienes alguna pregunta?
+        </span>
+        <p class="text-[#4D4D4D] text-center">
+            Estaremos encatados de resolvertela, no dudes en ponerte en contacto
+            con nosotros a traves de este formulario. Es IMPORTANTE que pongas
+            tu correo electrónico que tengas mas a mano ya que te contestaremos
+            a traves de ese.
+        </p>
+    </div>
+
+    <div
+        id="form"
+        class="md:w-[70%] w-full flex flex-col gap-y-5 mt-10 self-center"
+    >
+        <div class="flex flex-row gap-x-5">
+            <TextField id="name" name="nameField" placeholder="Nombre" />
+            <TextField
+                id="emailX"
+                name="emailField"
+                placeholder="Correo electrónico *"
+                required
+            />
+        </div>
+
+        <TextField
+            id="phone"
+            name="phoneField"
+            placeholder="Número de telefono"
+        />
+        <TextField id="comment" name="commentField" placeholder="Comentario" />
+
+        <button
+            id="submit"
+            type="submit"
+            class="rounded-[8px] bg-black text-white hover:text-black hover:bg-white border-black hover:border-[1px] cursor-pointer p-3 px-10 w-fit"
+        >
+            Enviar
+        </button>
+    </div>
+
+    <div class="hcontainer mt-10">
+        <div class="container">
+            <span> O tambien nos puedes llamar </span>
+            <div class="tooltip">
+                <div onclick="myFunction()" onmouseout="outFunc()">
+                    <span class="tooltiptext" id="myTooltip">Copiar</span>
+                    +34 693 49 31 11
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script is:inline>
+        const submitButton = document.getElementById("submit");
+
+        function sendMessage() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("emailX").value;
+            const phone = document.getElementById("phone").value;
+            const comment = document.getElementById("comment").value;
+
+            const message = `mailto:heycampervans@gmail.com?subject=Furhter information - Hey Camper&body=I'm ${name}, My email is: ${email}, My phone is: ${phone}. \n${comment}`;
+            window.open(message);
+        }
+
+        function myFunction() {
+            navigator.clipboard.writeText("+34 693 49 31 11");
+
+            var tooltip = document.getElementById("myTooltip");
+            tooltip.innerHTML = "Copiado";
+        }
+
+        function outFunc() {
+            var tooltip = document.getElementById("myTooltip");
+            tooltip.innerHTML = "Copiar";
+        }
+
+        submitButton.addEventListener("click", sendMessage);
+    </script>
+</LayoutPage>
