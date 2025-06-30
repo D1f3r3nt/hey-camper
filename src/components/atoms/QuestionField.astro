@@ -1,0 +1,43 @@
+---
+import IconQuestion from "../../assets/icons/icon-question.svg";
+import IconArrowDown from "../../assets/icons/icon-arrow-down.svg";
+
+interface Props {
+    index: number;
+    question: string;
+    response: string;
+}
+
+const { index, question, response } = Astro.props;
+---
+
+<div
+    onclick={`toggleResponse(${index})`}
+    class="flex flex-col w-full first:border-t-[1px] border-b-[1px] border-[#F5F5F5] p-3 gap-y-3 hover:bg-[#F5F5F5] cursor-pointer hover:[&>#question>span]:underline"
+>
+    <div id="question" class="flex flex-row items-center gap-x-2">
+        <IconQuestion class="w-[20px] h-[20px]" />
+        <span class="w-full text-brevia text-[#8FB990]">
+            {question}
+        </span>
+        <IconArrowDown
+            id={`iconId${index}`}
+            class="w-[10px] h-[10px] rotate-180"
+        />
+    </div>
+    <div id={`responseId${index}`} class="hidden">
+        <span class="text-[#4D4D4D]">
+            {response}
+        </span>
+    </div>
+
+    <script is:inline>
+        function toggleResponse(id) {
+            const responseElement = document.getElementById(`responseId${id}`);
+            const iconElement = document.getElementById(`iconId${id}`);
+
+            responseElement?.classList.toggle("hidden");
+            iconElement?.classList.toggle("rotate-180");
+        }
+    </script>
+</div>
