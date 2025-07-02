@@ -1,24 +1,15 @@
 ---
+interface Props {
+    index: number;
+}
+
+const { index } = Astro.props;
+
 const lang = Astro.params.lang || "es";
 ---
 
-<select id="lang-selector">
-    <option value="es" selected={lang === "es"}>Español</option>
+<select id={`lang-selector-${index}`} class="bg-white cursor-pointer">
+    <option value="es" selected={lang === "es"}> Español </option>
     <option value="en" selected={lang === "en"}>English</option>
     <option value="de" selected={lang === "de"}>Deutsch</option>
 </select>
-
-<script is:inline>
-    const select = document.getElementById("lang-selector");
-
-    select.addEventListener("change", ({ target }) => {
-        const selectedLang = target.value;
-
-        const newPath = window.location.pathname.replace(
-            /^\/(es|en|de)/,
-            `/${selectedLang}`,
-        );
-
-        window.location.pathname = newPath;
-    });
-</script>

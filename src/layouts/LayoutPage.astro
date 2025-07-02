@@ -31,6 +31,27 @@ const lang = Astro.params.lang || "es";
 		</main>
 		<Footer />
 	</body>
+
+	<script is:inline>
+		const select1 = document.getElementById("lang-selector-1");
+		const select2 = document.getElementById("lang-selector-2");
+		const select3 = document.getElementById("lang-selector-3");
+
+		function changeLang(target) {
+			let selectedLang = target.value;
+
+			let newPath = window.location.pathname.replace(
+				/^\/(es|en|de)/,
+				`/${selectedLang}`,
+			);
+
+			window.location.pathname = newPath;
+		}
+
+		select1.addEventListener("change", ({ target }) => changeLang(target));
+		select2.addEventListener("change", ({ target }) => changeLang(target));
+		select3.addEventListener("change", ({ target }) => changeLang(target));
+	</script>
 </html>
 
 <style>
