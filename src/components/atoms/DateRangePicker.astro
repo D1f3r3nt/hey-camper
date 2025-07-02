@@ -1,0 +1,45 @@
+<div class="flex flex-col">
+    <label for="startDate" class="font-bold text-[#4D4D4D]">Fecha inicio:</label
+    >
+    <input
+        type="date"
+        id="startDate"
+        class="mb-5 rounded border-[1px] border-[#4D4D4D] p-2 mt-1 cursor-pointer"
+    />
+
+    <label for="endDate" class="font-bold text-[#4D4D4D]">Fecha final:</label>
+    <input
+        type="date"
+        id="endDate"
+        class="rounded border-[1px] border-[#4D4D4D] p-2 mt-1 cursor-pointer"
+    />
+
+    <script is:inline>
+        const startInput = document.getElementById("startDate");
+        const endInput = document.getElementById("endDate");
+
+        startInput.addEventListener("change", () => {
+            if (startInput.value) {
+                // Calcular fecha mínima permitida para fin (al menos 1 día después)
+                const startDate = new Date(startInput.value);
+                const minEndDate = new Date(startDate);
+                minEndDate.setDate(minEndDate.getDate() + 1);
+
+                // Formatear fecha al formato YYYY-MM-DD
+                const yyyy = minEndDate.getFullYear();
+                const mm = String(minEndDate.getMonth() + 1).padStart(2, "0");
+                const dd = String(minEndDate.getDate()).padStart(2, "0");
+                const minDateStr = `${yyyy}-${mm}-${dd}`;
+
+                endInput.min = minDateStr;
+
+                // Si la fecha fin es inválida, la reseteamos
+                if (endInput.value && endInput.value < minDateStr) {
+                    endInput.value = "";
+                }
+            } else {
+                endInput.min = "";
+            }
+        });
+    </script>
+</div>

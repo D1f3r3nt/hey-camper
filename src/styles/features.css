@@ -1,0 +1,48 @@
+.container-cara {
+    display: flex;
+    width: 100 vw;
+    justify-content: center;
+    color: #4d4d4d;
+    margin-bottom: 30px;
+}
+
+.body-cara {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    max-width: 780px;
+    width: 100%;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.body-cara>span {
+    font-family: "Brevia";
+    color: #8FB990;
+    font-size: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.element {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.element>div:first-child {
+    width: 300px;
+}
+
+.element>div:last-child {
+    font-weight: bold;
+    grid-column: 2 / span 2;
+}
+
+.b-buttom {
+    border-bottom: 1px solid #b4ccd0;
+}

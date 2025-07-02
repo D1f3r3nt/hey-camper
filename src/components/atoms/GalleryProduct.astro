@@ -1,0 +1,66 @@
+---
+import "../../styles/gallery.css";
+---
+
+<div class="product-gallery">
+    <!-- Imagen principal -->
+    <div class="main-image">
+        <img
+            id="currentImage"
+            src="https://placehold.co/500x500?text=Imagen+1"
+            alt="Producto"
+        />
+    </div>
+
+    <!-- Miniaturas -->
+    <div class="thumbnails overflow-x-scroll">
+        <img
+            src="https://placehold.co/100x100?text=Imagen+1"
+            alt="Imagen 1"
+            class="thumb active"
+        />
+        <img
+            src="https://placehold.co/100x100?text=Imagen+2"
+            alt="Imagen 2"
+            class="thumb"
+        />
+        <img
+            src="https://placehold.co/100x100?text=Imagen+3"
+            alt="Imagen 3"
+            class="thumb"
+        />
+        <img
+            src="https://placehold.co/100x100?text=Imagen+4"
+            alt="Imagen 4"
+            class="thumb"
+        />
+        <img
+            src="https://placehold.co/100x100?text=Imagen+5"
+            alt="Imagen 5"
+            class="thumb"
+        />
+        <img
+            src="https://placehold.co/100x100?text=Imagen+6"
+            alt="Imagen 6"
+            class="thumb"
+        />
+        <img
+            src="https://placehold.co/100x100?text=Imagen+7"
+            alt="Imagen 7"
+            class="thumb"
+        />
+    </div>
+
+    <script is:inline>
+        const currentImage = document.getElementById("currentImage");
+        const thumbnails = document.querySelectorAll(".thumb");
+
+        thumbnails.forEach((thumb) => {
+            thumb.addEventListener("click", () => {
+                currentImage.src = thumb.src.replace("100x100", "500x500");
+                thumbnails.forEach((t) => t.classList.remove("active"));
+                thumb.classList.add("active");
+            });
+        });
+    </script>
+</div>

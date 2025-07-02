@@ -5,13 +5,15 @@ interface Props {
     label: string;
     link: string;
     icon?: boolean;
+    onClick?: string;
 }
 
-const { label, link, icon = true } = Astro.props;
+const { label, link, icon = true, onClick } = Astro.props;
 ---
 
 <a
     href={link}
+    onclick={`${onClick}`}
     class="h-[40px] p-[4px] rounded-[8px] bg-[#8fb990] text-white text-[16px] flex flex-row gap-x-2 justify-center items-center hover:bg-white hover:text-[#8fb990] border-[#8fb990] hover:border-[1px] hover:[&_*]:fill-[#8fb990]"
 >
     {label}

@@ -1,0 +1,137 @@
+---
+import AButtonPrimary from "../../components/atoms/AButtons/AButtonPrimary.astro";
+import DateRangePicker from "../../components/atoms/DateRangePicker.astro";
+import FeaturesProduct from "../../components/atoms/FeaturesProduct.astro";
+import GalleryProduct from "../../components/atoms/GalleryProduct.astro";
+import LayoutPage from "../../layouts/LayoutPage.astro";
+
+import "../../styles/global.css";
+---
+
+<LayoutPage indexMenu={1} title="Adventure - Hey Camper">
+    <div class="flex lg:flex-row flex-col self-center">
+        <GalleryProduct />
+        <div class="flex flex-col lg:ml-10 gap-y-5">
+            <span class="text-brevia text-[#8FB990] text-[40px]">
+                Adventure
+            </span>
+            <span class="text-[18px]"> Desde 75€ / día </span>
+            <p class="text-[#4D4D4D] w-[350px]">
+                Adventure, fácil de conducir y disponible con el carnet de
+                coche. Una camper perfecta para descubrir cada rincón de la isla
+                de Mallorca sin limites. Con un interior muy equipado y
+                práctico...
+            </p>
+            <span class="text-[18px] text-[#4D4D4D] font-bold"> EXTRAS </span>
+            <ul style="list-style-type:disc" class="ml-5">
+                <li>Un Paddle Surf (+10€/día)</li>
+                <li>Dos Paddle Surf (+15€/día)</li>
+                <li>Traslado Aeropuerto (+10€)</li>
+            </ul>
+
+            <DateRangePicker />
+
+            <AButtonPrimary
+                label="Reserva ahora"
+                link=""
+                icon={false}
+                onClick="goToBooking()"
+            />
+        </div>
+    </div>
+
+    <div class="mt-10">
+        <span class="text-brevia text-[30px]">
+            ¿Que equipamiento tiene la Camper Adventure?
+        </span>
+
+        <ul
+            style="list-style-type:disc"
+            class="ml-5 mt-8 [&>*]:text-[16px] [&>*]:text-[#4D4D4D] [&>*]:mb-5 max-w-[700px]"
+        >
+            <li>
+                Ventanas tintadas y con posibilidad de abrirse
+                independientemente de la puerta. Ademas se incluye un kit
+                completo de parasoles para mayor intimidad y aislamiento.
+            </li>
+            <li>
+                Armarios y espacio para el equipaje, distribuidos por el
+                interior de la camper.
+            </li>
+            <li>
+                Cama plegable, con disponibilidad para dos personas, y un
+                espacio grande debajo de la cama para las mascotas.
+            </li>
+
+            <li>
+                Se incluyen sabanas y cojines, con las dimensiones ideales para
+                la cama plegable.
+            </li>
+
+            <li>
+                Deposito de agua con bomba automatica para poder ducharse.
+                Ademas se incluye toalla, suelo portatil para la ducha y toldo
+                para mayor intimidad para ducharse y cambiarse.
+            </li>
+            <li>
+                Nevera portatil, no conectada a la electricidad. (no se incluyen
+                los hielos).
+            </li>
+            <li>
+                Baca con posibilidad de llevar hasta dos equipos de Paddle Surf
+                (no incluido por defecto, mirar extras).
+            </li>
+            <li>
+                Luces para el interior, mas de 2 tomas de USB y conector de 12V
+                para cargar dispositivos.
+            </li>
+            <li>
+                Una mesa plegable para el interior y sillas de pic-nic para el
+                interior y exterior.
+            </li>
+            <li>WC Portatil</li>
+            <li>
+                Kit de cocina y vajilla para dos personas. Con campingaz y su
+                respectivo cartucho.
+            </li>
+        </ul>
+    </div>
+
+    <div class="mt-10">
+        <span class="text-brevia text-[30px]">
+            ¿Que procedimientos de higiene se siguen?
+        </span>
+
+        <p class="text-[#4D4D4D] max-w-[700px] my-8">
+            La Camper Adventure se revisa antes y despues de cada alquiler, se
+            limpia y desinfecta con detalle. Para el próximo alquiler se
+            entregar con una sabana nueva, un kit de cojines nuevos y un kit de
+            toallas nuevas.
+        </p>
+    </div>
+
+    <FeaturesProduct />
+</LayoutPage>
+
+<script is:inline>
+    function goToBooking() {
+        const startInput = document.getElementById("startDate");
+        const endInput = document.getElementById("endDate");
+        let url = "https://www.yescapa.es/campers/96676";
+
+        if (startInput.value !== "" && endInput.value !== "") {
+            url += `?date_from=${formatDate(startInput.value)}&date_to=${formatDate(endInput.value)}`;
+        }
+
+        window.open(url);
+    }
+
+    function formatDate(d) {
+        const date = new Date(d);
+        const yyyy = date.getFullYear();
+        const mm = String(date.getMonth() + 1).padStart(2, "0"); // Mes empieza en 0
+        const dd = String(date.getDate()).padStart(2, "0");
+
+        return `${yyyy}-${mm}-${dd}`;
+    }
+</script>
