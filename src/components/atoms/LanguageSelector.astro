@@ -8,7 +8,7 @@ const { index } = Astro.props;
 const lang = Astro.params.lang || "es";
 ---
 
-<select id={`lang-selector-${index}`} class="bg-white cursor-pointer">
+<select id={`lang-selector-${index}`} class="cursor-pointer">
     <option value="es" selected={lang === "es"}> Español </option>
     <option value="en" selected={lang === "en"}>English</option>
     <option value="de" selected={lang === "de"}>Deutsch</option>
