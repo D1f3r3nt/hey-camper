@@ -1,44 +1,42 @@
 ---
 import QuestionField from "../atoms/QuestionField.astro";
+
+import es from "../../i18n/es.json";
+import en from "../../i18n/en.json";
+import de from "../../i18n/de.json";
+
+const lang = "es";
+const t = lang === "es" ? es : lang === "en" ? en : de;
 ---
 
 <div
     class="md:w-[50%] w-[80%] flex flex-col items-center justify-center self-center mb-10"
 >
-    <span class="text-brevia text-[40px] mb-8 text-[#8FB990]">Preguntas</span>
+    <span class="text-brevia text-[40px] mb-8 text-[#8FB990]"
+        >{t.home.questions}</span
+    >
 
     <QuestionField
         index={0}
-        question="¿Puedo conducirlas con el carnet de coche?"
-        response="Si, nuestras furgonetas se pueden conducir con el carnet B (coche)."
+        question={t.home.question_1}
+        response={t.home.question_1_response}
     />
 
     <QuestionField
         index={1}
-        question="¿Cuantas personas pueden ir? "
-        response=`Principalmente nuestras furgonetas estan disponibles para solo 2 personas, en caso de necesidad 
-        se puede estirar hasta un máximo de 3 personas, en este caso se ha de informar antes.
-        Ademas, se permite traer hasta un máximo de 3 mascotas.`
+        question={t.home.question_2}
+        response={t.home.question_2_response}
     />
 
     <QuestionField
         index={2}
-        question="¿Hay límite de kilómetros? "
-        response=`El kilometraje es ILIMITADO. No obstante está prohibido salir de la isla de Mallorca.`
+        question={t.home.question_3}
+        response={t.home.question_3_response}
     />
 
     <QuestionField
         index={3}
-        question=" ¿Cómo se realiza la recogida/devolución de la camper? "
-        response=`
-
-La recogida y devolución de la camper se realiza en nuestro parking.
-
-Hay posibilidad de contratar el servicio extra de Traslado.
-
-Nuestro horario de recogida y entrega es desde las10:00h hasta las 22:00h.
-
-Recibirás un mail con toda la información necesaria después de formalizar tu reserva
-`
+        question={t.home.question_4}
+        response={t.home.question_4_response}
     />
 </div>

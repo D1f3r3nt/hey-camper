@@ -1,5 +1,12 @@
 ---
 import AButtonPrimary from "../atoms/AButtons/AButtonPrimary.astro";
+
+import es from "../../i18n/es.json";
+import en from "../../i18n/en.json";
+import de from "../../i18n/de.json";
+
+const lang = "es";
+const t = lang === "es" ? es : lang === "en" ? en : de;
 ---
 
 <div
@@ -14,20 +21,20 @@ import AButtonPrimary from "../atoms/AButtons/AButtonPrimary.astro";
     <div
         class="flex flex-col gap-y-3 max-w-[300px] lg:ml-[40px] mx-[10px] mt-5"
     >
-        <span class="text-brevia text-[#8fb990] text-[40px]"> Adventure </span>
+        <span class="text-brevia text-[#8fb990] text-[40px]">
+            {t.highlight_product.name}
+        </span>
 
-        <span class="text-[18px]"> Desde 75€/día </span>
+        <span class="text-[18px]"> {t.highlight_product.price} </span>
 
         <p
             class="text-[#4D4D4D] text-[16px] leading-[28px] tracking-[0.6px] mb-[40px]"
         >
-            Adventure, fácil de conducir y disponible con el carnet de coche.
-            Una camper perfecta para descubrir cada rincón de la isla de
-            Mallorca sin limites. Con un interior muy equipado y práctico...
+            {t.highlight_product.description}
         </p>
 
         <AButtonPrimary
-            label="Mira tu próxima camper"
+            label={t.highlight_product.cta}
             link="/camper/adventure"
         />
     </div>
