@@ -15,8 +15,9 @@
 .thumbnails {
     margin-top: 1rem;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .thumbnails img {
