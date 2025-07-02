@@ -1,5 +1,15 @@
+---
+import es from "../../i18n/es.json";
+import en from "../../i18n/en.json";
+import de from "../../i18n/de.json";
+
+const lang = Astro.params.lang || "es";
+const t = lang === "es" ? es : lang === "en" ? en : de;
+---
+
 <div class="flex flex-col">
-    <label for="startDate" class="font-bold text-[#4D4D4D]">Fecha inicio:</label
+    <label for="startDate" class="font-bold text-[#4D4D4D]"
+        >{t.adventure.start_date}</label
     >
     <input
         type="date"
@@ -7,7 +17,9 @@
         class="mb-5 rounded border-[1px] border-[#4D4D4D] p-2 mt-1 cursor-pointer"
     />
 
-    <label for="endDate" class="font-bold text-[#4D4D4D]">Fecha final:</label>
+    <label for="endDate" class="font-bold text-[#4D4D4D]"
+        >{t.adventure.end_date}</label
+    >
     <input
         type="date"
         id="endDate"

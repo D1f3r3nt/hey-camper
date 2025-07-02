@@ -1,43 +1,50 @@
 ---
+import es from "../../i18n/es.json";
+import en from "../../i18n/en.json";
+import de from "../../i18n/de.json";
+
 import "../../styles/features.css";
+
+const lang = Astro.params.lang || "es";
+const t = lang === "es" ? es : lang === "en" ? en : de;
 ---
 
 <div class="container-cara">
     <div class="body-cara">
-        <span>Características</span>
+        <span>{t.adventure.features}</span>
 
         <div class="element b-buttom">
-            <div>Edad Mínima</div>
+            <div>{t.adventure.min_age}</div>
             <div>25</div>
         </div>
 
         <div class="element b-buttom">
-            <div>Carnet necesario</div>
+            <div>{t.adventure.license_necesary}</div>
             <div>B</div>
         </div>
 
         <div class="element b-buttom">
-            <div>Máximo Número de Ocupantes</div>
+            <div>{t.adventure.max_persons}</div>
             <div>3</div>
         </div>
 
         <div class="element b-buttom">
-            <div>Máximo Número de Mascotas</div>
+            <div>{t.adventure.max_pets}</div>
             <div>3</div>
         </div>
 
         <div class="element b-buttom">
-            <div>Kilometraje Máximo</div>
-            <div>Ilimitado</div>
+            <div>{t.adventure.max_km}</div>
+            <div>{t.adventure.unlimited}</div>
         </div>
 
         <div class="element b-buttom">
-            <div>Seguro Incluído</div>
+            <div>{t.adventure.insurance_included}</div>
             <div>Si</div>
         </div>
 
         <div class="element">
-            <div>Aire Acondicionado</div>
+            <div>{t.adventure.ac}</div>
             <div>Si</div>
         </div>
     </div>

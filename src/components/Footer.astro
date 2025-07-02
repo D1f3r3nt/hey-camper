@@ -1,11 +1,12 @@
 ---
+import LanguageSelector from "./atoms/LanguageSelector.astro";
 import Social from "./atoms/Social.astro";
 ---
 
 <footer class="w-full flex justify-center bg-[#27546D]">
     <div class="max-w-[1200px] w-full px-[50px] pb-[40px] [&_*]:text-white">
         <div class="flex flex-row justify-between py-[30px]">
-            <div>Español</div>
+            <LanguageSelector />
             <Social />
         </div>
         <div class="flex flex-row text-[10px] justify-center">

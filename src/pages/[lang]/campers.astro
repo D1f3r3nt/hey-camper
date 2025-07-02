@@ -1,0 +1,31 @@
+---
+import HighlightCamper from "../../components/molecules/HighlightCamper.astro";
+import LayoutPage from "../../layouts/LayoutPage.astro";
+
+import es from "../../i18n/es.json";
+import en from "../../i18n/en.json";
+import de from "../../i18n/de.json";
+
+import "../../styles/global.css";
+
+export function getStaticPaths() {
+    return [
+        { params: { lang: "es" } },
+        { params: { lang: "en" } },
+        { params: { lang: "de" } },
+    ];
+}
+
+export const defaultRedirect = "/es";
+
+const lang = Astro.params.lang || "es";
+const t = lang === "es" ? es : lang === "en" ? en : de;
+---
+
+<LayoutPage indexMenu={1} title="Campers - Hey Camper">
+    <span class="text-brevia md:text-[40px] text-[30px] text-[#8FB990]">
+        {t.nav.campers}
+    </span>
+
+    <HighlightCamper />
+</LayoutPage>

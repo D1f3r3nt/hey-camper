@@ -8,10 +8,11 @@ interface Props {
 }
 
 const { title, indexMenu } = Astro.props;
+const lang = Astro.params.lang || "es";
 ---
 
 <!doctype html>
-<html>
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
